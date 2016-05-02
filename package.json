@@ -1,0 +1,23 @@
+{
+  "name": "handcar-hoo-ha",
+  "version": "0.1.0",
+  "description": "Simple game using HTML Canvas",
+  "main": "src/js/handcar-hoo-ha.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "canvas",
+    "game"
+  ],
+  "author": "DJ WoodZ",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.6",
+    "gulp-eslint": "^2.0.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-minify": "0.0.11"
+  }
+}
