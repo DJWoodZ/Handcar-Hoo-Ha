@@ -288,21 +288,21 @@
       ctx.font = '11px monospace';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
-      ctx.fillText('Health: ' + lives, 2, 0);
+      ctx.fillText('Health: ' + formatNumber(lives), 2, 0);
 
       // level
       ctx.fillStyle = 'rgba(0, 0, 128, 1)';
       ctx.font = '11px monospace';
       ctx.textAlign = 'right';
       ctx.textBaseline = 'top';
-      ctx.fillText('Level: ' + level, canvas.width - 2, 0);
+      ctx.fillText('Level: ' + formatNumber(level), canvas.width - 2, 0);
 
       // score
       ctx.fillStyle = 'rgba(0, 0, 0, 1)';
       ctx.font = 'bold 14px monospace';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillText(parseInt(score + tempScore).toLocaleString(), canvas.width / 2, 0);
+      ctx.fillText(formatNumber(parseInt(score + tempScore)), canvas.width / 2, 0);
 
       // high score
       if(highScore > 0) {
@@ -310,7 +310,7 @@
         ctx.font = '12px monospace';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
-        ctx.fillText('Best: ' + parseInt(highScore).toLocaleString(), canvas.width / 2, canvas.height);
+        ctx.fillText('Best: ' + formatNumber(parseInt(highScore)), canvas.width / 2, canvas.height);
       }
 
       // logo
@@ -460,6 +460,10 @@
 
     var randomInt = function(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
+    };
+
+    var formatNumber = function(num) {
+      return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     };
 
     var checkCollision = function(rect1, rect2) {
