@@ -299,14 +299,22 @@
 
       // score
       ctx.fillStyle = 'rgba(0, 0, 0, 1)';
-      ctx.font = 'bold 14px monospace';
+      if(score + tempScore > highScore) {
+        ctx.font = 'bold 14px monospace';
+      } else {
+        ctx.font = '14px monospace';
+      }
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
       ctx.fillText(formatNumber(parseInt(score + tempScore)), canvas.width / 2, 0);
 
       // high score
       if(highScore > 0) {
-        ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+        if(highScore > score + tempScore) {
+          ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+        } else {
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+        }
         ctx.font = '12px monospace';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
