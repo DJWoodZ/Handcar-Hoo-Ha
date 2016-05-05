@@ -3,6 +3,7 @@ var gutil = require('gulp-util');
 var clean = require('gulp-clean');
 var eslint = require('gulp-eslint');
 var csslint = require('gulp-csslint');
+var htmllint = require('gulp-htmllint')
 var minify = require('gulp-minify');
 var cleanCSS = require('gulp-clean-css');
 var htmlmin = require('gulp-htmlmin');
@@ -80,6 +81,19 @@ gulp.task('lint-css', function() {
     .pipe(csslint.reporter('fail'));
 });
 
+gulp.task('lint-html', function() {
+	return gulp.src('src/*.html')
+		.pipe(htmllint({}, function(filepath, issues) {
+			if (issues.length > 0) {
+				issues.forEach(function (issue) {
+					gutil.log(gutil.colors.cyan('[gulp-htmllint] ') + gutil.colors.white(filepath + ' [' + issue.line + ',' + issue.column + ']: ') + gutil.colors.red('(' + issue.code + ') ' + issue.msg));
+				});
+				// failOnError not working, so exit here instead
+				process.exit(1);
+			}
+		}));
+});
+
 gulp.task('minify-js', ['clean', 'lint-js'], function() {
   gulp.src('src/js/*.js')
     .pipe(minify({
@@ -99,7 +113,7 @@ gulp.task('minify-css', ['clean', 'lint-css'], function() {
     .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('minify-html', ['clean'], function() {
+gulp.task('minify-html', ['clean', 'lint-html'], function() {
   return gulp.src('src/*.html')
     .pipe(htmlmin({
       collapseWhitespace: true
