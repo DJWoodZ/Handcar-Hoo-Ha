@@ -20,6 +20,16 @@ You can then run gulp tasks. The default task will lint and minify the code:
 
 `gulp`
 
+Change Log
+----------
+
+* v0.2.0 -
+  * CSS and HTML linting
+  * Custom number formatting for consistency
+  * Improved 'score' and 'best score' displays
+  * Added shadow effect to goal
+* v0.1.0 - Initial Version
+
 License
 -------
 
