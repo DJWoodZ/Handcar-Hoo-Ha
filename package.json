@@ -16,8 +16,10 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-clean-css": "^2.0.6",
+    "gulp-csslint": "^0.3.0",
     "gulp-eslint": "^2.0.0",
     "gulp-htmlmin": "^2.0.0",
-    "gulp-minify": "0.0.11"
+    "gulp-minify": "0.0.11",
+    "gulp-util": "^3.0.7"
   }
 }

@@ -1,16 +1,18 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
+var clean = require('gulp-clean');
+var eslint = require('gulp-eslint');
+var csslint = require('gulp-csslint');
 var minify = require('gulp-minify');
 var cleanCSS = require('gulp-clean-css');
 var htmlmin = require('gulp-htmlmin');
-var eslint = require('gulp-eslint');
-var clean = require('gulp-clean');
 
 gulp.task('clean', function () {
 	return gulp.src('dist', {read: false})
 		.pipe(clean());
 });
 
-gulp.task('lint', function() {
+gulp.task('lint-js', function() {
   return gulp.src('src/**/*.js').pipe(eslint({
     'envs': ['browser'],
     'rules': {
@@ -66,7 +68,19 @@ gulp.task('lint', function() {
   .pipe(eslint.failOnError());
 });
 
-gulp.task('minify-js', ['clean', 'lint'], function() {
+gulp.task('lint-css', function() {
+  gulp.src('src/css/*.css')
+    .pipe(csslint())
+    .pipe(csslint.reporter(function(file) {
+			gutil.log(gutil.colors.cyan(file.csslint.errorCount) + ' errors in ' + gutil.colors.magenta(file.path));
+			file.csslint.results.forEach(function(result) {
+				gutil.log(result.error.message + ' on line ' + result.error.line);
+			});
+		}))
+    .pipe(csslint.reporter('fail'));
+});
+
+gulp.task('minify-js', ['clean', 'lint-js'], function() {
   gulp.src('src/js/*.js')
     .pipe(minify({
         ext:{
@@ -77,7 +91,7 @@ gulp.task('minify-js', ['clean', 'lint'], function() {
     .pipe(gulp.dest('dist/js'))
 });
 
-gulp.task('minify-css', ['clean'], function() {
+gulp.task('minify-css', ['clean', 'lint-css'], function() {
   return gulp.src('src/css/*.css')
     .pipe(cleanCSS({
       compatibility: 'ie8'}
