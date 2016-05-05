@@ -280,6 +280,9 @@
         ctx.drawImage(sprites.player2, player.x, player.y);
       }
 
+      ctx.fillStyle = goalInnerShadow;
+      ctx.fillRect(canvas.width - sprites.goal.width, (canvas.height / 2) - (sprites.goal.height / 2), 10, sprites.goal.height);
+
       // goal
       ctx.drawImage(sprites.goal, canvas.width - sprites.goal.width, (canvas.height / 2) - (sprites.goal.height / 2));
 
@@ -465,6 +468,13 @@
     sprites.tree1 = newImage('images/tree1.png');
     sprites.tree2 = newImage('images/tree2.png');
     sprites.logo = newImage('images/djwoodz-logo-small.png');
+
+    var goalInnerShadow = ctx.createLinearGradient(canvas.width - sprites.goal.width,
+      (canvas.height / 2) - (sprites.goal.height / 2),
+      canvas.width - sprites.goal.width + 10,
+      (canvas.height / 2) - (sprites.goal.height / 2));
+    goalInnerShadow.addColorStop(0, 'rgba(44, 44, 44, 0)');
+    goalInnerShadow.addColorStop(1, 'rgba(44, 44, 44, 0.5)');
 
     var randomInt = function(min, max) {
       return Math.floor(Math.random() * (max - min)) + min;
