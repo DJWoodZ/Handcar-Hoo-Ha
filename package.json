@@ -2,6 +2,7 @@
   "name": "handcar-hoo-ha",
   "version": "0.2.0",
   "description": "Simple game using HTML Canvas",
+  "repository": "DJWoodZ/Handcar-Hoo-Ha",
   "main": "src/js/handcar-hoo-ha.js",
   "scripts": {
     "test": "gulp lint",
