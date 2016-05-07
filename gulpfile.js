@@ -128,5 +128,5 @@ gulp.task('copy-images', ['clean'], function() {
   .pipe(gulp.dest('dist/images'));
 });
 
-gulp.task('default', ['copy-images', 'minify']);
+gulp.task('default', ['minify', 'copy-images']);
 gulp.task('lint', ['lint-js', 'lint-css', 'lint-html']);
