@@ -129,3 +129,4 @@ gulp.task('copy-images', ['clean'], function() {
 });
 
 gulp.task('default', ['copy-images', 'minify']);
+gulp.task('lint', ['lint-js', 'lint-css', 'lint-html']);

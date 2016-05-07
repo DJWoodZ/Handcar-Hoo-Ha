@@ -4,7 +4,7 @@
   "description": "Simple game using HTML Canvas",
   "main": "src/js/handcar-hoo-ha.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "gulp lint",
     "install": "gulp"
   },
   "keywords": [
