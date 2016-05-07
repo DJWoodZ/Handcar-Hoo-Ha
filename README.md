@@ -18,9 +18,13 @@ If you would like to edit the code, you should install the development dependenc
 
 `npm install`
 
-You can then run gulp tasks. The default task will lint and minify the code:
+This project uses gulp. The default task will lint and minify the code:
 
 `gulp`
+
+If you would just like to lint the code (no minification) use:
+
+`gulp lint`
 
 Change Log
 ----------
