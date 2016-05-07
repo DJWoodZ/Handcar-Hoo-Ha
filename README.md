@@ -1,6 +1,8 @@
 Handcar Hoo Ha
 ==============
 
+[![Build Status](https://travis-ci.org/DJWoodZ/Handcar-Hoo-Ha.svg?branch=master)](https://travis-ci.org/DJWoodZ/Handcar-Hoo-Ha)
+
 Handcar Hoo Ha is the result of an experiment to create a game in just a couple of days using nothing but pure JavaScript (i.e. without any dependencies on third-party JavaScript libraries).
 
 [Play Handcar Hoo Ha](http://djwoodz.com/games/handcar-hoo-ha/)
