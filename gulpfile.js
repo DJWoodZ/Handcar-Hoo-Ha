@@ -70,7 +70,7 @@ gulp.task('lint-js', function() {
 });
 
 gulp.task('lint-css', function() {
-  gulp.src('src/**/*.css')
+  return gulp.src('src/**/*.css')
     .pipe(csslint())
     .pipe(csslint.reporter(function(file) {
 			gutil.log(gutil.colors.cyan(file.csslint.errorCount) + ' errors in ' + gutil.colors.magenta(file.path));
@@ -95,7 +95,7 @@ gulp.task('lint-html', function() {
 });
 
 gulp.task('minify-js', ['clean', 'lint-js'], function() {
-  gulp.src('src/js/*.js')
+  return gulp.src('src/js/*.js')
     .pipe(minify({
         ext:{
             min:'.js'
@@ -124,7 +124,7 @@ gulp.task('minify-html', ['clean', 'lint-html'], function() {
 gulp.task('minify', ['minify-js', 'minify-css', 'minify-html']);
 
 gulp.task('copy-images', ['clean'], function() {
-  gulp.src(['src/images/*.png'])
+  return gulp.src(['src/images/*.png'])
   .pipe(gulp.dest('dist/images'));
 });
 
